@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import ProductCard from '@/components/ProductCard';
 
 function SearchContent() {
@@ -16,7 +16,7 @@ function SearchContent() {
       setLoading(true);
       try {
         // Fetch from our newly updated backend route
-        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${q || ''}`);
+        const { data } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${q || ''}`);
         setProducts(data);
         setLoading(false);
       } catch (error) {

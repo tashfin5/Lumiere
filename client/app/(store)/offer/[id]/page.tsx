@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import { Loader2, ArrowLeft, Tag } from 'lucide-react';
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
@@ -35,7 +36,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
   useEffect(() => {
     const fetchOffer = async () => {
       try {
-        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/${id}`);
+        const { data } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/${id}`);
         setOffer(data);
       } catch (error) {
         console.error('Failed to load offer details', error);

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import { Loader2 } from 'lucide-react';
 
 interface Brand {
@@ -20,7 +20,7 @@ export default function BrandsPage() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands`);
+        const { data } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands`);
         setBrands(data);
       } catch (error) {
         console.error("Error fetching brands:", error);

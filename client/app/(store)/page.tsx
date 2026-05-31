@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import ProductCard from "@/components/ProductCard";
 import Link from 'next/link';
 import { Sparkles, PackageSearch } from 'lucide-react';
@@ -17,9 +17,9 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const [productsRes, categoriesRes, offersRes] = await Promise.all([
-          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?sort=trending`),
-          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`),
-          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers`)
+          cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?sort=trending`),
+          cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`),
+          cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers`)
         ]);
         setProducts(productsRes.data);
         setCategories(categoriesRes.data);

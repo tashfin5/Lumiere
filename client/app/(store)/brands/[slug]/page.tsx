@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, use } from 'react';
-import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import ProductCard from '@/components/ProductCard';
 import { Loader2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -25,12 +25,12 @@ export default function BrandDetailsPage({ params }: { params: Promise<{ slug: s
       setLoading(true);
       try {
         // 1. Fetch brand details by slug
-        const { data: brandData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands/${slug}`);
+        const { data: brandData } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands/${slug}`);
         setBrand(brandData);
 
         // 2. Fetch products for this brand
         if (brandData && brandData.name) {
-          const { data: productData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?brand=${encodeURIComponent(brandData.name)}`);
+          const { data: productData } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?brand=${encodeURIComponent(brandData.name)}`);
           setProducts(productData);
         }
       } catch (error) {

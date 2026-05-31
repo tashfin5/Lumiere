@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import toast from 'react-hot-toast';
 import { 
   Star, Heart, ShoppingBag, Minus, Plus, 
@@ -136,11 +137,11 @@ export default function ProductDetails() {
     const fetchData = async () => {
       try {
         // Fetch current product
-        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`);
+        const { data } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`);
         setProduct(data);
 
         // Fetch all products and filter for "similar" (excluding current)
-        const similarRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?category=${data.category}`);
+        const similarRes = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?category=${data.category}`);
         const filteredSimilar = similarRes.data
           .filter((p: any) => p._id !== id)
           .slice(0, 5);

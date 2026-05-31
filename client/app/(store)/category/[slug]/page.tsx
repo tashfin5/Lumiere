@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { cachedGet } from '@/utils/apiCache';
 import ProductCard from '@/components/ProductCard';
 import { Loader2, ChevronRight, ShoppingBag, Search } from 'lucide-react';
 import Link from 'next/link';
@@ -49,20 +50,20 @@ function CategoryContent({ slug }: { slug: string }) {
         // 0. Handle "All Products" special case
         if (slug.toLowerCase() === 'all') {
           setCategory({ name: 'All Products', slug: 'all' });
-          const categoriesRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
+          const categoriesRes = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
           setAllCategories(categoriesRes.data);
           let url = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?sort=${sortBy}`;
           if (debouncedMinPrice > 0) url += `&minPrice=${debouncedMinPrice}`;
           if (debouncedMaxPrice < 10000) url += `&maxPrice=${debouncedMaxPrice}`;
           
-          const productsRes = await axios.get(url);
+          const productsRes = await cachedGet(url);
           setProducts(productsRes.data);
           setLoading(false);
           return;
         }
 
         // 1. Fetch all categories to find the matching one by slug
-        const categoriesRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
+        const categoriesRes = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
         setAllCategories(categoriesRes.data);
         const foundCategory = categoriesRes.data.find(
           (c: any) => c.slug?.toLowerCase() === slug.toLowerCase()
@@ -70,7 +71,7 @@ function CategoryContent({ slug }: { slug: string }) {
 
         if (!foundCategory) {
           // If no precise category exists in DB yet, search products by keyword match as a smart fallback
-          const productsRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${slug}`);
+          const productsRes = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${slug}`);
           setProducts(productsRes.data);
           setCategory({ name: slug.charAt(0).toUpperCase() + slug.slice(1), slug });
           setLoading(false);
@@ -84,7 +85,7 @@ function CategoryContent({ slug }: { slug: string }) {
         if (debouncedMinPrice > 0) url += `&minPrice=${debouncedMinPrice}`;
         if (debouncedMaxPrice < 10000) url += `&maxPrice=${debouncedMaxPrice}`;
         
-        const productsRes = await axios.get(url);
+        const productsRes = await cachedGet(url);
         setProducts(productsRes.data);
         setLoading(false);
       } catch (err: any) {
