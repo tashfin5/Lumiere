@@ -69,7 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       }`}>
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-800">
-          <Link href="/" className="text-2xl font-serif font-medium text-primary tracking-widest flex-1 text-center">
+          <Link href="/" className="text-2xl font-serif font-medium text-white tracking-widest flex-1 text-center">
             LUMIÈRE<span className="text-gray-400 text-xs ml-2 font-light tracking-[0.2em] font-sans">ADMIN</span>
           </Link>
           <button className="md:hidden text-gray-400 hover:text-white" onClick={() => setIsSidebarOpen(false)}>
