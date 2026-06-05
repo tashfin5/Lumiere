@@ -56,7 +56,7 @@ export default function Home() {
   const selectedCategorySlug = selectedCategory?.slug;
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-20">
+    <main className="min-h-screen bg-transparent pb-20">
       
 
       {loading ? (
