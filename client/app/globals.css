@@ -1,24 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #5C150C; /* Exact Dark Maroon */
+  --color-primary: #5D1010; /* Rich Maroon */
   --color-secondary: #1A1A1A; /* Deeper secondary for contrast */
-  --color-accent: #FDF6C6; /* Exact Pale Yellow Cream */
-  --color-cream: #FDF6C6; /* Exact Pale Yellow Cream */
-
-  /* Override hardcoded pinks from old Glama theme */
-  --color-pink-50: var(--color-accent);
-  --color-pink-100: #F3EAB4; /* slightly darker for borders */
-  --color-pink-200: #EAE0A2;
-  --color-pink-300: var(--color-primary);
-  --color-pink-400: var(--color-primary);
-  --color-pink-500: var(--color-primary);
-  --color-pink-600: var(--color-primary);
-  --color-pink-700: var(--color-primary);
-  --color-pink-800: var(--color-primary);
-  --color-pink-900: var(--color-primary);
-  --color-pink-950: var(--color-primary);
-
+  --color-accent: #FDF6C6; /* Soft cream accent */
+  --color-cream: #FFFBE6; /* Pale yellow cream background */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
