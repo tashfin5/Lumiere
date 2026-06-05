@@ -96,11 +96,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className={`fixed md:static inset-y-0 left-0 z-50 w-64 text-white flex flex-col transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       }`} style={{ backgroundColor: isDark ? '#050505' : '#111827' }}>
-        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-800">
-          <Link href="/" className="text-2xl font-serif font-medium text-white tracking-widest flex-1 text-center">
-            LUMIÈRE<span className="text-gray-400 text-xs ml-2 font-light tracking-[0.2em] font-sans">ADMIN</span>
+        <div className="h-16 flex items-center justify-between px-4 border-b border-[#1f2937]">
+          <Link href="/" className="text-2xl font-serif font-medium text-[#ffffff] tracking-widest flex-1 text-center">
+            LUMIÈRE<span className="text-[#9ca3af] text-xs ml-2 font-light tracking-[0.2em] font-sans">ADMIN</span>
           </Link>
-          <button className="md:hidden text-gray-400 hover:text-white" onClick={() => setIsSidebarOpen(false)}>
+          <button className="md:hidden text-[#9ca3af] hover:text-[#ffffff]" onClick={() => setIsSidebarOpen(false)}>
             <X size={24} />
           </button>
         </div>
@@ -114,7 +114,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={item.path}
                 onClick={() => setIsSidebarOpen(false)}
                 className={`flex items-center space-x-3 px-4 py-3 rounded-md transition-colors ${
-                  isActive ? 'bg-primary text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                  isActive ? 'bg-primary text-[#ffffff]' : 'text-[#9ca3af] hover:bg-[#1f2937] hover:text-[#ffffff]'
                 }`}
               >
                 {item.icon}
@@ -124,10 +124,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           })}
         </nav>
 
-        <div className="p-4 border-t border-gray-800">
+        <div className="p-4 border-t border-[#1f2937]">
           <button 
             onClick={handleLogout}
-            className="flex items-center space-x-3 px-4 py-3 w-full text-left text-gray-400 hover:bg-gray-800 hover:text-white rounded-md transition-colors"
+            className="flex items-center space-x-3 px-4 py-3 w-full text-left text-[#9ca3af] hover:bg-[#1f2937] hover:text-[#ffffff] rounded-md transition-colors"
           >
             <LogOut size={20} />
             <span className="font-medium text-sm">Logout</span>
