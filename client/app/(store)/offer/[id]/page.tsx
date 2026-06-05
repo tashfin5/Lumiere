@@ -129,9 +129,9 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
               </div>
               
               {/* Get These Free */}
-              <div className="bg-primary/5 p-6 rounded-xl border border-primary/20">
-                <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-6 flex items-center gap-2">
-                  <span className="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
+              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wider mb-6 flex items-center gap-2">
+                  <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
                   Get These Free
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
