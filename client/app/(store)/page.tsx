@@ -81,8 +81,8 @@ export default function Home() {
 
           {/* Content Overlay */}
           <div className="relative z-10 px-4 max-w-3xl flex flex-col items-center mt-[-40px]">
-            <h1 className="text-4xl md:text-6xl md:leading-[1.1] font-serif font-semibold text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] mb-6 uppercase tracking-[0.1em] animate-in slide-in-from-bottom-6 duration-700 delay-100">
-              The K-Beauty <br className="hidden md:block" /> <span className="text-white">Glow Up</span>
+            <h1 className="text-4xl md:text-6xl md:leading-[1.1] font-serif font-semibold text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] mb-6 uppercase tracking-[0.1em] animate-in slide-in-from-bottom-6 duration-700 delay-100 gold-gradient-text">
+              The K-Beauty <br className="hidden md:block" /> <span className="text-white gold-gradient-text">Glow Up</span>
             </h1>
             <p className="text-sm md:text-lg text-white/90 font-light mb-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] max-w-xl tracking-wide animate-in slide-in-from-bottom-8 duration-700 delay-200">
               Explore the absolute best of Korean Skincare & Cosmetics.

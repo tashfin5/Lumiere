@@ -21,23 +21,23 @@
 }
 
 .dark {
-  --theme-primary: #FAF8E1;
-  --theme-primary-light: #FFFFFF;
-  --theme-secondary: #f9fafb;
-  --theme-accent: #1A0806;
-  --theme-cream: #1A0806;
-  --theme-white: #2A0A05;
+  --theme-primary: #D4AF37;
+  --theme-primary-light: #FFDF73;
+  --theme-secondary: #1a1a1a;
+  --theme-accent: #000000;
+  --theme-cream: #000000;
+  --theme-white: #111111;
 
-  --theme-gray-50: #1A0806;
-  --theme-gray-100: #2A1816;
-  --theme-gray-200: #3A2826;
-  --theme-gray-300: #5A4846;
-  --theme-gray-400: #7A6866;
-  --theme-gray-500: #9A8886;
-  --theme-gray-600: #BAA8A6;
-  --theme-gray-700: #DAC8C6;
-  --theme-gray-800: #EAE0DE;
-  --theme-gray-900: #FAF8E1;
+  --theme-gray-50: #0a0a0a;
+  --theme-gray-100: #111111;
+  --theme-gray-200: #1a1a1a;
+  --theme-gray-300: #262626;
+  --theme-gray-400: #404040;
+  --theme-gray-500: #525252;
+  --theme-gray-600: #737373;
+  --theme-gray-700: #a3a3a3;
+  --theme-gray-800: #d4d4d4;
+  --theme-gray-900: #f5f5f5;
 }
 
 @theme {
@@ -79,4 +79,28 @@ main {
 
 .animate-kenburns {
   animation: kenburns 25s ease-in-out infinite alternate;
+}
+
+/* Premium Black & Gold Utilities */
+.dark .gold-gradient-text {
+  background: linear-gradient(135deg, #B38728 0%, #FBF5B7 25%, #D4AF37 50%, #FBF5B7 75%, #AA771C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.dark button.bg-primary,
+.dark a.bg-primary {
+  background: linear-gradient(135deg, #AA771C 0%, #D4AF37 25%, #FBF5B7 50%, #D4AF37 75%, #8A5A19 100%) !important;
+  color: #000 !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.dark button.bg-primary:hover,
+.dark a.bg-primary:hover {
+  background: linear-gradient(135deg, #FBF5B7 0%, #D4AF37 25%, #AA771C 50%, #D4AF37 75%, #FBF5B7 100%) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
