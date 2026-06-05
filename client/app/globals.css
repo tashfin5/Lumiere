@@ -6,18 +6,18 @@
   --theme-secondary: #1A1A1A;
   --theme-accent: #E7DAC8;
   --theme-cream: #E7DAC8;
-  --theme-white: #D4C4B1;
+  --theme-white: #F2E5D5;
 
-  --theme-gray-50: #F4EBE1;
-  --theme-gray-100: #EADBC8;
-  --theme-gray-200: #E0D0BE;
-  --theme-gray-300: #d1d5db;
-  --theme-gray-400: #9ca3af;
-  --theme-gray-500: #6b7280;
-  --theme-gray-600: #4b5563;
-  --theme-gray-700: #374151;
-  --theme-gray-800: #1f2937;
-  --theme-gray-900: #111827;
+  --theme-gray-50: #F9F3EA;
+  --theme-gray-100: #EFE4D6;
+  --theme-gray-200: #E2D2BE;
+  --theme-gray-300: #C7B49F;
+  --theme-gray-400: #9A8774;
+  --theme-gray-500: #7A6958;
+  --theme-gray-600: #5C4D3F;
+  --theme-gray-700: #42362A;
+  --theme-gray-800: #2E251C;
+  --theme-gray-900: #1A140E;
 }
 
 .dark {
