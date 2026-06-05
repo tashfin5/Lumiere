@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #5D1010; /* Rich Maroon */
+  --color-primary: #5C150C; /* Exact Dark Maroon */
   --color-secondary: #1A1A1A; /* Deeper secondary for contrast */
-  --color-accent: #FDF6C6; /* Soft cream accent */
-  --color-cream: #FFFBE6; /* Pale yellow cream background */
+  --color-accent: #FDF6C6; /* Exact Pale Yellow Cream */
+  --color-cream: #FDF6C6; /* Exact Pale Yellow Cream */
+  --color-white: var(--color-cream); /* Override white globally */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
 
 body {
   background-color: var(--color-cream);
-  color: #1a1a1a;
+  color: var(--color-primary);
 }
 
 @keyframes kenburns {

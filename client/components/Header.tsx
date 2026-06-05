@@ -169,16 +169,16 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-[#F5DFCA]/90 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-all duration-300">
+      <header className="w-full bg-primary sticky top-0 z-50 shadow-md transition-all duration-300">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           
           {/* Left: Mobile Menu & Logo */}
           <div className="flex items-center lg:w-1/3 justify-start">
             <div className="lg:hidden cursor-pointer mr-4" onClick={() => setIsMobileMenuOpen(true)}>
-              <Menu className="w-6 h-6 text-gray-800" />
+              <Menu className="w-6 h-6 text-accent" />
             </div>
-            <Link href="/" className="text-3xl font-serif font-medium text-primary tracking-widest">
-              LUMIÈRE<span className="text-gray-900">.</span>
+            <Link href="/" className="text-3xl font-serif font-medium text-accent tracking-widest">
+              LUMIÈRE<span className="text-accent/70">.</span>
             </Link>
           </div>
 
@@ -192,10 +192,10 @@ const Header = () => {
                 onFocus={() => { if (predictiveResults.length > 0) setShowDropdown(true); }}
                 onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
                 placeholder={placeholderText || "Search..."} 
-                className="w-full bg-gray-100 border-2 border-gray-200/80 rounded-full py-2.5 pl-5 pr-12 focus:outline-none focus:border-primary focus:bg-white transition-all duration-300 text-sm text-gray-800 placeholder-gray-500 shadow-sm"
+                className="w-full bg-white/10 border-2 border-transparent rounded-full py-2.5 pl-5 pr-12 focus:outline-none focus:bg-white/20 focus:border-accent/50 transition-all duration-300 text-sm text-accent placeholder-accent/50 shadow-sm"
               />
-              <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary transition-colors">
-                {isSearching ? <Loader2 className="w-5 h-5 animate-spin text-primary" /> : <Search className="w-5 h-5" />}
+              <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-accent/50 hover:text-accent transition-colors">
+                {isSearching ? <Loader2 className="w-5 h-5 animate-spin text-accent" /> : <Search className="w-5 h-5" />}
               </button>
             </form>
             
@@ -233,20 +233,20 @@ const Header = () => {
           <div className="flex items-center justify-end lg:w-1/3 space-x-6 sm:space-x-8">
             {isClient && userInfo ? (
               <Link href="/dashboard" className="flex flex-col items-center justify-center cursor-pointer group">
-                <User className="w-5 h-5 text-primary group-hover:scale-110 group-hover:text-secondary transition-all duration-300" strokeWidth={1.5} />
-                <span className="hidden md:block text-[9px] uppercase font-bold text-gray-500 group-hover:text-gray-900 mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">My Account</span>
+                <User className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+                <span className="hidden md:block text-[9px] uppercase font-bold text-accent/70 group-hover:text-accent mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">My Account</span>
               </Link>
             ) : (
               <Link href="/login" className="flex flex-col items-center justify-center cursor-pointer group">
-                <User className="w-5 h-5 text-primary group-hover:scale-110 group-hover:text-secondary transition-all duration-300" strokeWidth={1.5} />
-                <span className="hidden md:block text-[9px] uppercase font-bold text-gray-500 group-hover:text-gray-900 mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">Login</span>
+                <User className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+                <span className="hidden md:block text-[9px] uppercase font-bold text-accent/70 group-hover:text-accent mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">Login</span>
               </Link>
             )}
             <Link href="/wishlist" className="relative flex flex-col items-center justify-center cursor-pointer group">
-                <Heart className="w-5 h-5 text-primary group-hover:scale-110 group-hover:text-secondary transition-all duration-300" strokeWidth={1.5} />
-                <span className="hidden md:block text-[9px] uppercase font-bold text-gray-500 group-hover:text-gray-900 mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">Wishlist</span>
+                <Heart className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+                <span className="hidden md:block text-[9px] uppercase font-bold text-accent/70 group-hover:text-accent mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">Wishlist</span>
                 {isClient && userInfo?.wishlist && userInfo.wishlist.length > 0 && (
-                  <span className={`absolute -top-1.5 -right-2 md:right-1 bg-secondary text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-sm ${bumpWishlist ? 'animate-bounce scale-110' : 'animate-in zoom-in duration-300'}`}>
+                  <span className={`absolute -top-1.5 -right-2 md:right-1 bg-accent text-primary text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-sm ${bumpWishlist ? 'animate-bounce scale-110' : 'animate-in zoom-in duration-300'}`}>
                     {userInfo.wishlist.length}
                   </span>
                 )}
@@ -257,11 +257,11 @@ const Header = () => {
               className="relative flex flex-col items-center justify-center cursor-pointer group"
               onClick={() => setIsCartOpen(true)}
             >
-              <ShoppingBag className="w-5 h-5 text-primary group-hover:scale-110 group-hover:text-secondary transition-all duration-300" strokeWidth={1.5} />
-              <span className="hidden md:block text-[9px] uppercase font-bold text-gray-500 group-hover:text-gray-900 mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">Bag</span>
+              <ShoppingBag className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+              <span className="hidden md:block text-[9px] uppercase font-bold text-accent/70 group-hover:text-accent mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">Bag</span>
               {/* Only show badge if isClient (hydration fix) and count > 0 */}
               {isClient && cartItemCount > 0 && (
-                <span className={`absolute -top-1.5 -right-2 md:right-0 bg-secondary text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-sm ${bumpBag ? 'animate-bounce scale-110' : 'animate-in zoom-in duration-300'}`}>
+                <span className={`absolute -top-1.5 -right-2 md:right-0 bg-accent text-primary text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-sm ${bumpBag ? 'animate-bounce scale-110' : 'animate-in zoom-in duration-300'}`}>
                   {cartItemCount}
                 </span>
               )}
@@ -280,10 +280,10 @@ const Header = () => {
                 onFocus={() => { if (predictiveResults.length > 0) setShowDropdown(true); }}
                 onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
                 placeholder={placeholderText || "Search..."} 
-                className="w-full bg-gray-100 border-2 border-gray-200/80 rounded-full py-2 px-5 focus:outline-none focus:border-primary focus:bg-white transition-all duration-300 text-sm shadow-sm"
+                className="w-full bg-white/10 border-2 border-transparent rounded-full py-2 px-5 focus:outline-none focus:bg-white/20 focus:border-accent/50 transition-all duration-300 text-sm text-accent placeholder-accent/50 shadow-sm"
               />
-              <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary transition-colors">
-                {isSearching ? <Loader2 className="w-4 h-4 animate-spin text-primary" /> : <Search className="w-4 h-4" />}
+              <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-accent/50 hover:text-accent transition-colors">
+                {isSearching ? <Loader2 className="w-4 h-4 animate-spin text-accent" /> : <Search className="w-4 h-4" />}
               </button>
             </form>
             
@@ -318,13 +318,13 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block bg-white/50 backdrop-blur-sm border-t border-gray-100 shadow-sm">
-          <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-gray-500 tracking-[0.2em]">
+        <div className="hidden lg:block bg-primary border-t border-accent/20 shadow-sm">
+          <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-accent/80 tracking-[0.2em]">
             {categories.map((cat) => (
               <Link 
                 key={cat.slug} 
                 href={`/category/${cat.slug}`} 
-                className="hover:text-primary relative after:absolute after:-bottom-4 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center transition-colors"
+                className="hover:text-white relative after:absolute after:-bottom-4 after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center transition-colors"
               >
                 {cat.name}
               </Link>
@@ -336,7 +336,7 @@ const Header = () => {
                 onMouseEnter={handleMouseEnterOffers}
                 onMouseLeave={handleMouseLeaveOffers}
               >
-                <div className="hover:text-primary relative after:absolute after:-bottom-4 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center transition-colors flex items-center">
+                <div className="hover:text-white relative after:absolute after:-bottom-4 after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center transition-colors flex items-center">
                   Offers
                   <ChevronDown className={`w-3 h-3 ml-1 transition-transform duration-300 ${showOffersDesktop ? 'rotate-180' : ''}`} />
                 </div>
