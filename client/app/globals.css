@@ -3,9 +3,8 @@
 @theme {
   --color-primary: #5C150C; /* Exact Dark Maroon */
   --color-secondary: #1A1A1A; /* Deeper secondary for contrast */
-  --color-accent: #FDF6C6; /* Exact Pale Yellow Cream */
-  --color-cream: #FDF6C6; /* Exact Pale Yellow Cream */
-  --color-white: var(--color-cream); /* Override white globally */
+  --color-accent: #FAF8E1; /* Exact pale background */
+  --color-cream: #FAF8E1; /* Exact pale background */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
