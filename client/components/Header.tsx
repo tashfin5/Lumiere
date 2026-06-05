@@ -187,7 +187,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-primary sticky top-0 z-50 shadow-md transition-all duration-300">
+      <header className="storefront-header sticky top-0 z-50 bg-primary shadow-md transition-all duration-300">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           
           {/* Left: Mobile Menu & Logo */}
@@ -346,8 +346,8 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block bg-primary-light border-t border-accent/10 shadow-sm">
-          <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-accent/80 tracking-[0.2em]">
+        <div className="hidden lg:block bg-[var(--theme-primary-light)] border-t border-accent/10 shadow-sm">
+          <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-accent opacity-80 tracking-[0.2em]">
             {categories.map((cat) => (
               <Link 
                 key={cat.slug} 
