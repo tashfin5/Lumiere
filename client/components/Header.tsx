@@ -187,7 +187,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="storefront-header sticky top-0 z-50 bg-primary shadow-md transition-all duration-300">
+      <header className="w-full bg-primary sticky top-0 z-50 shadow-md transition-all duration-300">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           
           {/* Left: Mobile Menu & Logo */}
@@ -346,8 +346,8 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block bg-[var(--theme-primary-light)] border-t border-accent/10 shadow-sm">
-          <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-accent opacity-80 tracking-[0.2em]">
+        <div className="hidden lg:block bg-primary-light border-t border-accent/10 shadow-sm">
+          <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-accent/80 tracking-[0.2em]">
             {categories.map((cat) => (
               <Link 
                 key={cat.slug} 
@@ -415,13 +415,13 @@ const Header = () => {
 
         <div className="flex-1 overflow-y-auto py-6 px-6">
           {/* Mobile Nav Links */}
-          <nav className="flex flex-col space-y-6 text-[13px] font-medium uppercase text-gray-700 tracking-widest">
+          <nav className="flex flex-col space-y-6 text-[13px] font-medium uppercase text-accent tracking-widest">
             {categories.map((cat) => (
               <Link 
                 key={cat.slug}
                 href={`/category/${cat.slug}`} 
                 onClick={() => setIsMobileMenuOpen(false)} 
-                className="hover:text-primary transition-colors"
+                className="opacity-80 hover:opacity-100 transition-opacity"
               >
                 {cat.name}
               </Link>
@@ -430,7 +430,7 @@ const Header = () => {
             {activeOffers && activeOffers.length > 0 && (
               <div className="flex flex-col">
                 <div 
-                  className="flex items-center justify-between cursor-pointer hover:text-primary transition-colors"
+                  className="flex items-center justify-between cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
                   onClick={() => setShowOffersMobile(!showOffersMobile)}
                 >
                   <span>Offers</span>
@@ -443,7 +443,7 @@ const Header = () => {
                         key={offer._id}
                         href={`/offer/${offer.slug}`} 
                         onClick={() => setIsMobileMenuOpen(false)} 
-                        className="hover:text-primary transition-colors text-xs font-semibold tracking-wider text-gray-500 normal-case"
+                        className="opacity-70 hover:opacity-100 transition-opacity text-xs font-semibold tracking-wider normal-case"
                       >
                         {offer.title}
                       </Link>
@@ -453,7 +453,7 @@ const Header = () => {
               </div>
             )}
             
-            <Link href="/brands" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">Brands</Link>
+            <Link href="/brands" onClick={() => setIsMobileMenuOpen(false)} className="opacity-80 hover:opacity-100 transition-opacity">Brands</Link>
           </nav>
         </div>
       </div>

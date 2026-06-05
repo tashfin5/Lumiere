@@ -40,12 +40,6 @@
   --theme-gray-900: #FAF8E1;
 }
 
-.dark .storefront-header {
-  --theme-primary: #140503;
-  --theme-primary-light: #2A0A05;
-  --theme-accent: #FAF8E1;
-}
-
 @theme {
   --color-primary: var(--theme-primary);
   --color-primary-light: var(--theme-primary-light);

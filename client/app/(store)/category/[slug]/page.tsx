@@ -215,7 +215,7 @@ function CategoryContent({ slug }: { slug: string }) {
               <h3 className="font-bold text-gray-900 mb-4 uppercase tracking-widest text-xs">Product Categories</h3>
               <ul className="space-y-3">
                 <li className="flex justify-between items-center text-sm">
-                  <Link href={`/category/all`} className={`${slug.toLowerCase() === 'all' ? 'text-primary font-bold' : 'text-gray-600 hover:text-primary transition-colors'}`}>
+                  <Link href={`/category/all`} className={`${slug.toLowerCase() === 'all' ? 'text-gray-900 font-bold' : 'text-gray-900/70 hover:text-gray-900 transition-colors'}`}>
                     All Products
                   </Link>
                   <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100">
@@ -224,7 +224,7 @@ function CategoryContent({ slug }: { slug: string }) {
                 </li>
                 {allCategories.map(cat => (
                   <li key={cat.slug} className="flex justify-between items-center text-sm">
-                    <Link href={`/category/${cat.slug}`} className={`${slug.toLowerCase() === cat.slug ? 'text-primary font-bold' : 'text-gray-600 hover:text-primary transition-colors'}`}>
+                    <Link href={`/category/${cat.slug}`} className={`${slug.toLowerCase() === cat.slug ? 'text-gray-900 font-bold' : 'text-gray-900/70 hover:text-gray-900 transition-colors'}`}>
                       {cat.name}
                     </Link>
                     <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100">{cat.count || 0}</span>
