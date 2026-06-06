@@ -14,6 +14,7 @@ interface Product {
   price: number;
   stock: number;
   images: string[];
+  views: number;
 }
 
 export default function AdminProductsPage() {
@@ -97,6 +98,7 @@ export default function AdminProductsPage() {
                 <th className="p-4">Brand</th>
                 <th className="p-4">Price</th>
                 <th className="p-4">Stock</th>
+                <th className="p-4">Views</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
             </thead>
@@ -132,6 +134,7 @@ export default function AdminProductsPage() {
                         {product.stock === 0 && <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-bold uppercase">Out of Stock</span>}
                       </div>
                     </td>
+                    <td className="p-4 font-medium text-gray-800">{product.views || 0}</td>
                     <td className="p-4">
                       <div className="flex items-center justify-end gap-2 md:opacity-0 group-hover:opacity-100 transition-opacity">
                         <Link href={`/admin/products/edit/${product._id}`} className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"><Edit className="w-4 h-4" /></Link>

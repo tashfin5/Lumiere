@@ -21,8 +21,6 @@ const getCategories = asyncHandler(async (req, res) => {
 const getCategoryById = asyncHandler(async (req, res) => {
   const category = await Category.findById(req.params.id);
   if (category) {
-    category.views = (category.views || 0) + 1;
-    await category.save();
     res.json(category);
   } else {
     res.status(404);

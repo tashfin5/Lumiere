@@ -10,6 +10,7 @@ interface Category {
   name: string;
   slug: string;
   image?: string;
+  views?: number;
 }
 
 export default function AdminCategoriesPage() {
@@ -195,6 +196,7 @@ export default function AdminCategoriesPage() {
             <tr className="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500 font-bold">
               <th className="p-4">Category Name</th>
               <th className="p-4">Slug</th>
+              <th className="p-4">Views</th>
               <th className="p-4 text-right">Actions</th>
             </tr>
           </thead>
@@ -215,6 +217,7 @@ export default function AdminCategoriesPage() {
                     {category.name}
                   </td>
                   <td className="p-4 text-gray-600 font-mono">{category.slug}</td>
+                  <td className="p-4 font-medium text-gray-800">{category.views || 0}</td>
                   <td className="p-4 text-right min-w-[120px]">
                     <div className="flex items-center justify-end gap-2">
                       <button onClick={() => openEditForm(category)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors" title="Edit Category"><Edit className="w-4 h-4" /></button>

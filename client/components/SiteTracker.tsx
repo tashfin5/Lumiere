@@ -7,14 +7,24 @@ export default function SiteTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname.startsWith('/admin')) return;
+
     const trackView = async () => {
       try {
-        await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/stats/site`);
+        const viewedKey = `viewed_${pathname}`;
+        if (!sessionStorage.getItem(viewedKey)) {
+          sessionStorage.setItem(viewedKey, 'true');
+          await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/stats/track`, { pathname });
+        }
       } catch (error) {
         console.error('Failed to track site view', error);
       }
     };
-    trackView();
+    
+    // Only run on the client
+    if (typeof window !== 'undefined') {
+      trackView();
+    }
   }, [pathname]);
 
   return null;

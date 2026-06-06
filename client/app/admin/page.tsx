@@ -15,18 +15,8 @@ interface OrderStats {
     createdAt: string;
     user?: { name: string };
     shippingAddress?: { name: string };
-  }>;
-}
-
 interface ViewStats {
   totalViews: number;
-  breakdown: {
-    products: number;
-    categories: number;
-    brands: number;
-    offers: number;
-    mainSite: number;
-  };
 }
 
 export default function AdminDashboard() {
@@ -83,30 +73,6 @@ export default function AdminDashboard() {
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Views Breakdown */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
-        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
-          <p className="text-xs text-gray-500 uppercase">Main Website</p>
-          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.mainSite || 0}</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
-          <p className="text-xs text-gray-500 uppercase">Products</p>
-          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.products || 0}</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
-          <p className="text-xs text-gray-500 uppercase">Categories</p>
-          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.categories || 0}</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
-          <p className="text-xs text-gray-500 uppercase">Brands</p>
-          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.brands || 0}</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
-          <p className="text-xs text-gray-500 uppercase">Offers</p>
-          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.offers || 0}</p>
-        </div>
       </div>
 
       {/* Recent Orders Table */}

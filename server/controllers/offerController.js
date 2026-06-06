@@ -60,8 +60,6 @@ const getOfferById = asyncHandler(async (req, res) => {
   }
 
   if (offer) {
-    offer.views = (offer.views || 0) + 1;
-    await offer.save();
     res.json(offer);
   } else {
     res.status(404);

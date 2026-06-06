@@ -98,8 +98,6 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 
   if (product) {
-    product.views = (product.views || 0) + 1;
-    await product.save();
     res.json(product);
   } else {
     res.status(404);

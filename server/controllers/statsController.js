@@ -5,52 +5,55 @@ const Category = require('../models/Category');
 const Brand = require('../models/Brand');
 const Offer = require('../models/Offer');
 
-// @desc    Increment overall site views
-// @route   POST /api/stats/site
+// @desc    Track a view for a given pathname
+// @route   POST /api/stats/track
 // @access  Public
-const incrementSiteViews = asyncHandler(async (req, res) => {
-  let stats = await SiteStats.findOne({ page: 'main' });
-  if (!stats) {
-    stats = new SiteStats({ page: 'main', views: 0 });
+const trackView = asyncHandler(async (req, res) => {
+  const { pathname } = req.body;
+  if (!pathname) {
+    res.status(400);
+    throw new Error('Pathname is required');
   }
-  stats.views += 1;
-  await stats.save();
-  res.json({ message: 'Site view incremented', views: stats.views });
+
+  // Always increment main site view for any tracked request
+  let siteStats = await SiteStats.findOne({ page: 'main' });
+  if (!siteStats) {
+    siteStats = new SiteStats({ page: 'main', views: 0 });
+  }
+  siteStats.views += 1;
+  await siteStats.save();
+
+  // Increment specific item if applicable
+  if (pathname.startsWith('/product/')) {
+    const slug = pathname.split('/')[2];
+    if (slug) await Product.updateOne({ slug }, { $inc: { views: 1 } });
+  } else if (pathname.startsWith('/category/')) {
+    const slug = pathname.split('/')[2];
+    if (slug) await Category.updateOne({ slug }, { $inc: { views: 1 } });
+  } else if (pathname.startsWith('/brands/')) {
+    const slug = pathname.split('/')[2];
+    if (slug) await Brand.updateOne({ slug }, { $inc: { views: 1 } });
+  } else if (pathname.startsWith('/offer/')) {
+    const slug = pathname.split('/')[2];
+    if (slug) await Offer.updateOne({ slug }, { $inc: { views: 1 } });
+  }
+
+  res.json({ success: true, siteViews: siteStats.views });
 });
 
 // @desc    Get aggregated stats for Admin Dashboard
 // @route   GET /api/stats
 // @access  Private/Admin
 const getAggregatedStats = asyncHandler(async (req, res) => {
-  // Aggregate views from all collections
-  const productViewsAgg = await Product.aggregate([{ $group: { _id: null, totalViews: { $sum: '$views' } } }]);
-  const categoryViewsAgg = await Category.aggregate([{ $group: { _id: null, totalViews: { $sum: '$views' } } }]);
-  const brandViewsAgg = await Brand.aggregate([{ $group: { _id: null, totalViews: { $sum: '$views' } } }]);
-  const offerViewsAgg = await Offer.aggregate([{ $group: { _id: null, totalViews: { $sum: '$views' } } }]);
-  
   const siteStats = await SiteStats.findOne({ page: 'main' });
-
-  const productViews = productViewsAgg[0]?.totalViews || 0;
-  const categoryViews = categoryViewsAgg[0]?.totalViews || 0;
-  const brandViews = brandViewsAgg[0]?.totalViews || 0;
-  const offerViews = offerViewsAgg[0]?.totalViews || 0;
-  const mainSiteViews = siteStats?.views || 0;
-
-  const totalViews = productViews + categoryViews + brandViews + offerViews + mainSiteViews;
+  const totalViews = siteStats?.views || 0;
 
   res.json({
-    totalViews,
-    breakdown: {
-      products: productViews,
-      categories: categoryViews,
-      brands: brandViews,
-      offers: offerViews,
-      mainSite: mainSiteViews,
-    }
+    totalViews
   });
 });
 
 module.exports = {
-  incrementSiteViews,
+  trackView,
   getAggregatedStats,
 };

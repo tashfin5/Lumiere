@@ -66,6 +66,7 @@ export default function AdminOffersPage() {
                 <th className="p-4 w-32">Banner Image</th>
                 <th className="p-4">Title</th>
                 <th className="p-4">Status</th>
+                <th className="p-4">Views</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
             </thead>
@@ -102,6 +103,7 @@ export default function AdminOffersPage() {
                         </span>
                       )}
                     </td>
+                    <td className="p-4 font-semibold text-gray-800">{offer.views || 0}</td>
                     <td className="p-4">
                       <div className="flex justify-end gap-2">
                         <Link 
