@@ -9,19 +9,29 @@ const Offer = require('../models/Offer');
 // @route   POST /api/stats/track
 // @access  Public
 const trackView = asyncHandler(async (req, res) => {
-  const { pathname } = req.body;
+  const { pathname, isFirstSiteView } = req.body;
   if (!pathname) {
     res.status(400);
     throw new Error('Pathname is required');
   }
 
-  // Always increment main site view for any tracked request
-  let siteStats = await SiteStats.findOne({ page: 'main' });
-  if (!siteStats) {
-    siteStats = new SiteStats({ page: 'main', views: 0 });
+  let siteViews = 0;
+
+  // Only increment main site view once per session
+  if (isFirstSiteView) {
+    let siteStats = await SiteStats.findOne({ page: 'main' });
+    if (!siteStats) {
+      siteStats = new SiteStats({ page: 'main', views: 0 });
+    }
+    siteStats.views += 1;
+    await siteStats.save();
+    siteViews = siteStats.views;
+  } else {
+    const siteStats = await SiteStats.findOne({ page: 'main' });
+    if (siteStats) {
+      siteViews = siteStats.views;
+    }
   }
-  siteStats.views += 1;
-  await siteStats.save();
 
   // Increment specific item if applicable
   if (pathname.startsWith('/product/')) {
@@ -38,7 +48,7 @@ const trackView = asyncHandler(async (req, res) => {
     if (slug) await Offer.updateOne({ slug }, { $inc: { views: 1 } });
   }
 
-  res.json({ success: true, siteViews: siteStats.views });
+  res.json({ success: true, siteViews });
 });
 
 // @desc    Get aggregated stats for Admin Dashboard
