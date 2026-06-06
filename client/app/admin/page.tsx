@@ -15,6 +15,9 @@ interface OrderStats {
     createdAt: string;
     user?: { name: string };
     shippingAddress?: { name: string };
+  }>;
+}
+
 interface ViewStats {
   totalViews: number;
 }
