@@ -1,5 +1,7 @@
 # Lumiere E-Commerce Platform
 
+**Live Demo:** [https://lumiereog.com](https://lumiereog.com)
+
 Lumiere is a full-stack, responsive e-commerce web application featuring a modern storefront and a comprehensive admin dashboard. 
 
 ## 🚀 Features
