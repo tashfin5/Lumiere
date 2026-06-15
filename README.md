@@ -8,6 +8,8 @@
 ![Express.js](https://img.shields.io/badge/Express.js-Backend-gray?style=for-the-badge&logo=express)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb)
 
+🌍 **Live Website:** [tonmoyphotography.com](https://tonmoyphotography.com)
+
 Lumiere is a state-of-the-art, full-stack, responsive e-commerce web application designed to offer a seamless shopping experience and a robust administration back-office. It features a modern customer storefront and a comprehensive admin dashboard, meticulously engineered for performance, aesthetic appeal, and scalability.
 
 ## 🚀 Key Features
